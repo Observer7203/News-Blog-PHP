@@ -1,0 +1,11 @@
+/vendor/
+/node_modules/
+.env
+/templates/cache/*
+/templates/compile/*
+!templates/cache/.gitkeep
+!templates/compile/.gitkeep
+/public/assets/uploads/*
+!public/assets/uploads/.gitkeep
+.DS_Store
+*.log

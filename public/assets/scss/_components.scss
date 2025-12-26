@@ -1,0 +1,431 @@
+// Buttons
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-2;
+    padding: $spacing-3 $spacing-6;
+    font-size: $font-size-sm;
+    font-weight: 500;
+    border-radius: $radius;
+    border: none;
+    transition: all $transition-fast;
+    white-space: nowrap;
+
+    &-primary {
+        background-color: $primary;
+        color: $white;
+
+        &:hover {
+            background-color: $primary-dark;
+        }
+    }
+
+    &-outline {
+        background-color: transparent;
+        color: $primary;
+        border: 1px solid $primary;
+
+        &:hover {
+            background-color: $primary;
+            color: $white;
+        }
+    }
+}
+
+// Header
+.header {
+    background-color: $white;
+    border-bottom: 1px solid $gray-200;
+    padding: $spacing-4 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+
+    &-text {
+        font-size: $font-size-xl;
+        font-weight: 700;
+        color: $primary;
+    }
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: $spacing-6;
+
+    &-link {
+        color: $gray-600;
+        font-weight: 500;
+        transition: color $transition-fast;
+
+        &:hover {
+            color: $primary;
+        }
+    }
+}
+
+// Footer
+.footer {
+    background-color: $gray-900;
+    color: $gray-400;
+    padding: $spacing-12 0 $spacing-8;
+    margin-top: auto;
+
+    &-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding-bottom: $spacing-8;
+        border-bottom: 1px solid $gray-800;
+        margin-bottom: $spacing-6;
+    }
+
+    &-brand {
+        .logo-text {
+            color: $white;
+            margin-bottom: $spacing-2;
+        }
+    }
+
+    &-description {
+        color: $gray-500;
+        font-size: $font-size-sm;
+    }
+
+    &-links {
+        display: flex;
+        gap: $spacing-6;
+
+        a {
+            color: $gray-400;
+            transition: color $transition-fast;
+
+            &:hover {
+                color: $white;
+            }
+        }
+    }
+
+    &-bottom {
+        text-align: center;
+        font-size: $font-size-sm;
+    }
+}
+
+// Hero Section
+.hero {
+    text-align: center;
+    padding: $spacing-12 0;
+
+    &-title {
+        font-size: $font-size-4xl;
+        font-weight: 700;
+        color: $gray-900;
+        margin-bottom: $spacing-3;
+    }
+
+    &-subtitle {
+        font-size: $font-size-lg;
+        color: $gray-500;
+    }
+}
+
+// Category Section
+.category-section {
+    margin-bottom: $spacing-12;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.category-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: $spacing-6;
+    padding-bottom: $spacing-4;
+    border-bottom: 1px solid $gray-200;
+}
+
+.category-info {
+    flex: 1;
+}
+
+.category-title {
+    font-size: $font-size-2xl;
+    font-weight: 600;
+    color: $gray-900;
+    margin-bottom: $spacing-1;
+}
+
+.category-description {
+    color: $gray-500;
+    font-size: $font-size-sm;
+}
+
+// Articles Grid
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-6;
+
+    @media (max-width: 992px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 640px) {
+        grid-template-columns: 1fr;
+    }
+
+    &-3 {
+        grid-template-columns: repeat(3, 1fr);
+
+        @media (max-width: 992px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (max-width: 640px) {
+            grid-template-columns: 1fr;
+        }
+    }
+}
+
+// Article Card
+.article-card {
+    background: $white;
+    border: 1px solid $gray-200;
+    border-radius: $radius-lg;
+    overflow: hidden;
+    transition: all $transition;
+
+    &:hover {
+        border-color: $primary;
+        box-shadow: $shadow-md;
+
+        .article-card-title {
+            color: $primary;
+        }
+    }
+
+    &-link {
+        display: block;
+    }
+
+    &-image {
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+        background-color: $gray-100;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform $transition-slow;
+        }
+
+        &:hover img {
+            transform: scale(1.05);
+        }
+    }
+
+    &-placeholder {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, $gray-100 0%, $gray-200 100%);
+    }
+
+    &-content {
+        padding: $spacing-5;
+    }
+
+    &-title {
+        font-size: $font-size-lg;
+        font-weight: 600;
+        color: $gray-900;
+        margin-bottom: $spacing-2;
+        transition: color $transition-fast;
+        line-height: 1.4;
+    }
+
+    &-description {
+        font-size: $font-size-sm;
+        color: $gray-500;
+        margin-bottom: $spacing-4;
+        line-height: 1.6;
+    }
+
+    &-meta {
+        display: flex;
+        align-items: center;
+        gap: $spacing-4;
+        font-size: $font-size-xs;
+        color: $gray-400;
+    }
+}
+
+// Page Header
+.page-header {
+    margin-bottom: $spacing-8;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-2;
+    color: $gray-500;
+    font-size: $font-size-sm;
+    margin-bottom: $spacing-4;
+    transition: color $transition-fast;
+
+    &:hover {
+        color: $primary;
+    }
+}
+
+.page-title {
+    font-size: $font-size-3xl;
+    font-weight: 700;
+    color: $gray-900;
+    margin-bottom: $spacing-2;
+}
+
+.page-description {
+    color: $gray-500;
+    font-size: $font-size-lg;
+}
+
+// Filter Bar
+.filter-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $spacing-6;
+    padding: $spacing-4;
+    background: $gray-50;
+    border-radius: $radius;
+}
+
+.filter-info {
+    color: $gray-500;
+    font-size: $font-size-sm;
+}
+
+.filter-sort {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+
+    label {
+        color: $gray-500;
+        font-size: $font-size-sm;
+    }
+}
+
+.sort-select {
+    padding: $spacing-2 $spacing-4;
+    border: 1px solid $gray-300;
+    border-radius: $radius;
+    font-size: $font-size-sm;
+    color: $gray-700;
+    background: $white;
+    cursor: pointer;
+
+    &:focus {
+        outline: none;
+        border-color: $primary;
+    }
+}
+
+// Pagination
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: $spacing-2;
+    margin-top: $spacing-10;
+
+    &-numbers {
+        display: flex;
+        align-items: center;
+        gap: $spacing-1;
+    }
+
+    &-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 40px;
+        height: 40px;
+        padding: 0 $spacing-3;
+        border-radius: $radius;
+        font-size: $font-size-sm;
+        color: $gray-600;
+        transition: all $transition-fast;
+
+        &:hover:not(.pagination-current) {
+            background: $gray-100;
+            color: $primary;
+        }
+    }
+
+    &-current {
+        background: $primary;
+        color: $white;
+    }
+
+    &-prev, &-next {
+        gap: $spacing-2;
+    }
+
+    &-dots {
+        color: $gray-400;
+        padding: 0 $spacing-2;
+    }
+}
+
+// Empty State
+.empty-state {
+    text-align: center;
+    padding: $spacing-16 $spacing-8;
+    color: $gray-500;
+    grid-column: 1 / -1;
+}
+
+// Error Page
+.error-page {
+    text-align: center;
+    padding: $spacing-16 0;
+
+    .error-code {
+        font-size: 8rem;
+        font-weight: 700;
+        color: $primary;
+        line-height: 1;
+        margin-bottom: $spacing-4;
+    }
+
+    .error-title {
+        font-size: $font-size-3xl;
+        color: $gray-900;
+        margin-bottom: $spacing-3;
+    }
+
+    .error-description {
+        color: $gray-500;
+        margin-bottom: $spacing-8;
+    }
+}
