@@ -42,4 +42,29 @@ class Category
 
         return (int)Database::lastInsertId();
     }
+
+    public static function update(int $id, array $data): void
+    {
+        Database::query(
+            'UPDATE categories SET name = ?, slug = ?, description = ? WHERE id = ?',
+            [$data['name'], $data['slug'], $data['description'] ?? null, $id]
+        );
+    }
+
+    public static function delete(int $id): void
+    {
+        Database::query('DELETE FROM categories WHERE id = ?', [$id]);
+    }
+
+    public static function count(): int
+    {
+        $result = Database::fetch('SELECT COUNT(*) as count FROM categories');
+        return (int)($result['count'] ?? 0);
+    }
+
+    public static function deleteAll(): void
+    {
+        Database::query('DELETE FROM article_category');
+        Database::query('DELETE FROM categories');
+    }
 }

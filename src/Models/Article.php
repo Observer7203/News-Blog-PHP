@@ -107,4 +107,54 @@ class Article
             [$articleId, $categoryId]
         );
     }
+
+    public static function update(int $id, array $data): void
+    {
+        Database::query(
+            'UPDATE articles SET title = ?, slug = ?, description = ?, content = ?, image = ? WHERE id = ?',
+            [
+                $data['title'],
+                $data['slug'],
+                $data['description'],
+                $data['content'],
+                $data['image'] ?? null,
+                $id
+            ]
+        );
+    }
+
+    public static function delete(int $id): void
+    {
+        Database::query('DELETE FROM article_category WHERE article_id = ?', [$id]);
+        Database::query('DELETE FROM articles WHERE id = ?', [$id]);
+    }
+
+    public static function syncCategories(int $articleId, array $categoryIds): void
+    {
+        Database::query('DELETE FROM article_category WHERE article_id = ?', [$articleId]);
+        foreach ($categoryIds as $categoryId) {
+            self::attachCategory($articleId, (int)$categoryId);
+        }
+    }
+
+    public static function count(): int
+    {
+        $result = Database::fetch('SELECT COUNT(*) as count FROM articles');
+        return (int)($result['count'] ?? 0);
+    }
+
+    public static function deleteAll(): void
+    {
+        Database::query('DELETE FROM article_category');
+        Database::query('DELETE FROM articles');
+    }
+
+    public static function getCategoryIds(int $articleId): array
+    {
+        $rows = Database::fetchAll(
+            'SELECT category_id FROM article_category WHERE article_id = ?',
+            [$articleId]
+        );
+        return array_column($rows, 'category_id');
+    }
 }

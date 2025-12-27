@@ -26,8 +26,14 @@
         </div>
     </section>
     {foreachelse}
-    <div class="empty-state">
-        <p>No articles found</p>
+    <div class="empty-state empty-state-large">
+        <div class="empty-state-icon">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1m2 13a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2z"></path>
+            </svg>
+        </div>
+        <h2 class="empty-state-title">No posts yet</h2>
+        <p class="empty-state-text">There are no articles or categories available at the moment.</p>
     </div>
     {/foreach}
 </div>
