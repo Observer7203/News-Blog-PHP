@@ -13,17 +13,17 @@ A simple blog platform built with PHP 8.1+, MySQL, and Smarty template engine.
 
 2. Start the containers:
 ```bash
-docker-compose up -d --build
+docker compose up -d --build
 ```
 
 3. Install dependencies (if not installed during build):
 ```bash
-docker-compose exec php composer install
+docker compose exec php composer install
 ```
 
 4. Run the seeder to populate test data:
 ```bash
-docker-compose exec php php database/seeds/seeder.php
+docker compose exec php php database/seeds/seeder.php
 ```
 
 5. Open http://localhost:8080 in your browser
@@ -95,12 +95,25 @@ php -S localhost:8080 -t public
 - View counter for articles
 - Responsive design (AbeloHost style)
 - SCSS styling
+- Admin panel with CRUD for categories and articles
 
 ## URLs
 
 - `/` - Homepage
 - `/category/{slug}` - Category page
 - `/article/{slug}` - Article page
+
+## Admin Panel
+
+- `/admin` - Dashboard
+- `/admin/categories` - Manage categories
+- `/admin/articles` - Manage articles
+
+**Credentials:**
+- Login: `admin`
+- Password: `admin123`
+
+The admin panel includes a "Seed Database" button to populate test data.
 
 ## Database Schema
 
